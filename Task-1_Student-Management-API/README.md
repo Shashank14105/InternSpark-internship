@@ -1,110 +1,113 @@
-# Product Management REST API
+# 📚 Book Management REST API
 
-A RESTful CRUD API built using **Spring Boot**, **Spring Data JPA**, **MySQL**, **Lombok**, and **Jakarta Validation**. This project demonstrates the implementation of a layered architecture using Controller, Service, Repository, DTO, and Entity classes.
+A RESTful CRUD API built using **Spring Boot**, **Spring Data JPA**, **MySQL**, and **Lombok**. This project demonstrates the implementation of REST principles, layered architecture, DTOs, validation, exception handling, and database integration.
 
 ---
 
 ## 🚀 Features
 
-* Create a new Product
-* Retrieve all Products
-* Retrieve a Product by ID
-* Update Product details
-* Delete a Product
-* Input validation using Jakarta Validation
-* Custom Exception Handling
-* Global Exception Handler
-* RESTful API with proper HTTP Status Codes
-* MySQL Database Integration
-* Layered Architecture following Spring Boot best practices
+- Create a new Book
+- Retrieve all Books
+- Retrieve a Book by ID
+- Update existing Book details
+- Delete a Book
+- Request validation using Jakarta Validation
+- Global Exception Handling
+- MySQL Database Integration
+- Layered Architecture (Controller → Service → Repository)
+- DTO for request handling
 
 ---
 
 ## 🛠️ Technologies Used
 
-* Java 17
-* Spring Boot
-* Spring Web
-* Spring Data JPA
-* MySQL
-* Lombok
-* Jakarta Validation
-* Maven
-* Postman
+- Java 17
+- Spring Boot 3.x
+- Spring Web
+- Spring Data JPA
+- MySQL
+- Lombok
+- Maven
+- Jakarta Validation
+- Postman
 
 ---
 
 ## 📁 Project Structure
 
 ```text
-src
-└── main
-    └── java
-        └── com
-            └── example
-                └── productapi
-                    ├── controller
-                    │   └── ProductController.java
-                    │
-                    ├── service
-                    │   └── ProductService.java
-                    │
-                    ├── repository
-                    │   └── ProductRepository.java
-                    │
-                    ├── dto
-                    │   └── ProductDTO.java
-                    │
-                    ├── entity
-                    │   └── Product.java
-                    │
-                    ├── exception
-                    │   ├── ProductNotFoundException.java
-                    │   └── GlobalExceptionHandler.java
-                    │
-                    └── ProductApiApplication.java
+bookmanagementapi
+│
+├── src
+│   └── main
+│       ├── java
+│       │   └── com
+│       │       └── shashank
+│       │           └── bookmanagementapi
+│       │               ├── controller
+│       │               │     └── BookController.java
+│       │               │
+│       │               ├── dto
+│       │               │     └── BookDTO.java
+│       │               │
+│       │               ├── entity
+│       │               │     └── Book.java
+│       │               │
+│       │               ├── repository
+│       │               │     └── BookRepository.java
+│       │               │
+│       │               ├── service
+│       │               │     └── BookService.java
+│       │               │
+│       │               ├── exception
+│       │               │     ├── BookNotFoundException.java
+│       │               │     └── GlobalExceptionHandler.java
+│       │               │
+│       │               └── BookmanagementapiApplication.java
+│       │
+│       └── resources
+│             └── application.properties
+│
+├── pom.xml
+└── README.md
 ```
 
 ---
 
-## 📦 Product Fields
+## 📖 Book Fields
 
-| Field       | Type   | Description               |
-| ----------- | ------ | ------------------------- |
-| id          | Long   | Auto-generated Product ID |
-| name        | String | Product Name              |
-| description | String | Product Description       |
-| price       | Double | Product Price             |
+| Field | Type |
+|-------|------|
+| id | Long |
+| isbn | String |
+| title | String |
+| author | String |
+| pages | Integer |
 
 ---
 
-## 🌐 REST API Endpoints
+## 📌 REST API Endpoints
 
-| Method | Endpoint         | Description       | Status Code        |
-| ------ | ---------------- | ----------------- | ------------------ |
-| POST   | `/products`      | Create a Product  | **201 Created**    |
-| GET    | `/products`      | Get All Products  | **200 OK**         |
-| GET    | `/products/{id}` | Get Product by ID | **200 OK**         |
-| PUT    | `/products/{id}` | Update Product    | **200 OK**         |
-| DELETE | `/products/{id}` | Delete Product    | **204 No Content** |
+| Method | Endpoint | Description |
+|---------|----------|-------------|
+| POST | `/books` | Create a new Book |
+| GET | `/books` | Retrieve all Books |
+| GET | `/books/{id}` | Retrieve Book by ID |
+| PUT | `/books/{id}` | Update an existing Book |
+| DELETE | `/books/{id}` | Delete a Book |
 
 ---
 
 ## 📥 Sample Request (POST)
 
-**Endpoint**
-
-```http
-POST /products
-```
-
-**Request Body**
+**POST** `/books`
 
 ```json
 {
-    "name": "Laptop",
-    "description": "Gaming Laptop",
-    "price": 85000.00
+    "isbn": "9780134685991",
+    "title": "Effective Java",
+    "author": "Joshua Bloch",
+    "pages": 416
 }
 ```
 
@@ -115,53 +118,88 @@ POST /products
 ```json
 {
     "id": 1,
-    "name": "Laptop",
-    "description": "Gaming Laptop",
-    "price": 85000.00
+    "isbn": "9780134685991",
+    "title": "Effective Java",
+    "author": "Joshua Bloch",
+    "pages": 416
 }
 ```
 
 ---
 
-## ⚠️ Exception Handling
+## ⚙️ Database Configuration
 
-The application uses custom exception handling to provide meaningful error responses.
+Create a MySQL database:
 
-Example:
-
-```http
-GET /products/100
+```sql
+CREATE DATABASE book_db;
 ```
 
-Response:
+Configure your `application.properties`:
 
-```http
-404 Not Found
+```properties
+spring.datasource.url=jdbc:mysql://localhost:3306/book_db
+spring.datasource.username=root
+spring.datasource.password=your_password
+
+spring.jpa.hibernate.ddl-auto=update
+spring.jpa.show-sql=true
+spring.jpa.properties.hibernate.format_sql=true
 ```
-
-```text
-Product not found
-```
-
----
-
-## 🧪 Testing
-
-The API can be tested using:
-
-* Postman
-* cURL
-* IntelliJ HTTP Client
 
 ---
 
 ## ▶️ Running the Project
 
-1. Clone the repository.
-2. Configure MySQL database credentials in `application.properties`.
-3. Create the required database.
-4. Run the Spring Boot application.
-5. Test the endpoints using Postman.
+1. Clone the repository
+
+```bash
+git clone https://github.com/your-username/book-management-rest-api.git
+```
+
+2. Open the project in IntelliJ IDEA.
+
+3. Configure MySQL credentials in `application.properties`.
+
+4. Build the project using Maven.
+
+5. Run:
+
+```
+BookmanagementapiApplication.java
+```
+
+6. Test the endpoints using Postman.
+
+---
+
+## 🧪 Testing
+
+The API was tested using **Postman** for all CRUD operations.
+
+- Create Book
+- Get All Books
+- Get Book by ID
+- Update Book
+- Delete Book
+
+---
+
+## 📚 Concepts Demonstrated
+
+- RESTful API Development
+- Spring Boot
+- Spring MVC
+- Spring Data JPA
+- Hibernate ORM
+- MySQL Database Integration
+- DTO Pattern
+- Dependency Injection
+- CRUD Operations
+- Bean Validation
+- Exception Handling
+- Layered Architecture
+- HTTP Status Codes
 
 ---
 
@@ -169,4 +207,6 @@ The API can be tested using:
 
 **Shashank Kumar**
 
-Built as part of a Spring Boot REST API internship project to demonstrate CRUD operations, layered architecture, DTO usage, validation, exception handling, and database integration.
+B.Tech CSE (AI & ML)
+
+Spring Boot REST API Internship Project
