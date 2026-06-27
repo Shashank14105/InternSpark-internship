@@ -61,3 +61,14 @@ For each completed task, documentation has been prepared following these guideli
 * **Testing & Tools:** JUnit, Mockito, Postman
 * **Logging:** SLF4J / Logback
 * **DevOps:** Docker
+
+---
+
+# 👨‍💻 Developed By
+
+**Shashank Kumar**
+
+B.Tech CSE (Artificial Intelligence & Machine Learning)
+
+GitHub:
+[GitHub profile](https://github.com/Shashank14105/)
