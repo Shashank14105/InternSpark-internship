@@ -215,7 +215,7 @@ Include screenshots of:
 ### 1. Clone the Repository
 
 ```bash
-git clone YOUR_GITHUB_REPOSITORY_URL
+git clone https://github.com/Shashank14105/InternSpark-internship/tree/main/Task%203_Unit-Testing-%26-Logging/bookmanagementapi.git
 ```
 
 ### 3. Create Database
@@ -291,4 +291,4 @@ target/site/jacoco/index.html
 B.Tech CSE (Artificial Intelligence & Machine Learning)
 
 GitHub:
-(Add your GitHub profile link here)
+[GitHub profile](https://github.com/Shashank14105/)
