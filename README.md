@@ -72,3 +72,6 @@ B.Tech CSE (Artificial Intelligence & Machine Learning)
 
 GitHub:
 [GitHub profile](https://github.com/Shashank14105/)
+
+
+InternSpark AICTE Listed Java Internship Project
